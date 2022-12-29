@@ -1,7 +1,3 @@
-from utils.sim_rank import Similarity
-from utils.utils import init_graph
-import numpy as np
-
 
 def SimRank_one_iter(graph, sim):
     for node1 in graph.nodes:
@@ -19,18 +15,3 @@ def SimRank(graph, sim, iteration=100):
         # ans = sim.get_sim_matrix()
         # print(ans)
         # print()
-
-
-if __name__ == '__main__':
-
-    decay_factor = 0.9
-    iteration = 100
-
-    graph = init_graph('dataset/graph_4.txt')
-    sim = Similarity(graph, decay_factor)
-
-    SimRank(iteration, graph, sim)
-    ans = sim.get_sim_matrix()
-    print(ans)
-
-    np.savetxt('SimRank.txt', ans, delimiter=' ', fmt='%.2f')

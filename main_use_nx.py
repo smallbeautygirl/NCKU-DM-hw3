@@ -15,8 +15,8 @@ def use_library(graph_file_with_path:str):
     graph.add_edges_from(edges)
 
     plt.figure(figsize =(10, 10))
-    nx.draw_networkx(graph, with_labels = True)
-    
+    nx.draw_networkx(graph, with_labels = True,node_color='#9AC2C5')
+    plt.show()
     hubs, authorities = nx.hits(graph, max_iter = 1, normalized = True)
     # The in-built hits function returns two dictionaries keyed by nodes
     # containing hub scores and authority scores respectively.

@@ -1,8 +1,9 @@
+import time
 from utils.utils import init_graph
 from utils.hits import HITS
 from utils.page_rank import PageRank
-# from src.SimRank import SimRank
-# from src.Similarity import Similarity
+from utils.sim_rank import SimRank
+from utils.simiarity import Similarity
 
 import numpy as np
 import os
@@ -68,14 +69,18 @@ if __name__ == '__main__':
                         help='Iteration (int)')
     args = parser.parse_args() 
 
-    # file_path = options.input_file
-    # iteration = options.iteration
-    # damping_factor = options.damping_factor
-    # decay_factor = options.decay_factor
-
     graph = init_graph(args.dataset)
-    # sim = Similarity(graph, decay_factor)
+    sim = Similarity(graph, args.decay_factor)
 
+    s = time.time()
     output_HITS(args.iteration, graph, 'result', args.dataset.split('/')[-1].split('.')[0])
+    e = time.time()
+    print(f'{args.dataset} HITS: {e-s}')
+    s = time.time()
     output_PageRank(args.iteration, graph, args.damping_factor, 'result', args.dataset.split('/')[-1].split('.')[0])
+    e = time.time()
+    print(f'{args.dataset} PageRank: {e-s}')
+    s = time.time()
     output_SimRank(args.iteration, graph, args.decay_factor, 'result', args.dataset.split('/')[-1].split('.')[0])
+    e = time.time()
+    print(f'{args.dataset} SimRank: {e-s}')
