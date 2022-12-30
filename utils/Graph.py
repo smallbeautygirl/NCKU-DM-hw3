@@ -90,8 +90,7 @@ class Node:
     def update_hub(self):
         self.hub = sum(node.auth for node in self.children)
 
-    def update_pagerank(self, d, n):
-        in_neighbors = self.parents
-        pagerank_sum = sum((node.pagerank / len(node.children)) for node in in_neighbors)
-        random_jumping = d / n
-        self.pagerank = random_jumping + (1-d) * pagerank_sum
+    def update_pagerank(self, damping_factor:float, node_numbers:int):
+        pagerank_sum = sum((node.pagerank / len(node.children)) for node in self.parents)
+        random_jumping = damping_factor / node_numbers
+        self.pagerank = random_jumping + (1-damping_factor) * pagerank_sum

@@ -1,5 +1,5 @@
 
-def SimRank_one_iter(graph, sim):
+def sim_rank_one_iter(graph, sim):
     for node1 in graph.nodes:
         for node2 in graph.nodes:
             new_SimRank = sim.calculate_SimRank(node1, node2)
@@ -10,8 +10,7 @@ def SimRank_one_iter(graph, sim):
 
 
 def SimRank(graph, sim, iteration=100):
-    for i in range(iteration):
-        SimRank_one_iter(graph, sim)
-        # ans = sim.get_sim_matrix()
-        # print(ans)
-        # print()
+    x=0
+    while x < iteration:
+        x+=1 
+        sim_rank_one_iter(graph, sim)

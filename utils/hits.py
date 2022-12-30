@@ -1,16 +1,17 @@
 
-def HITS_one_iter(graph):
-    node_list = graph.nodes
+def hits_one_iter(graph):
 
-    for node in node_list:
+    for node in graph.nodes:
         node.update_auth()
 
-    for node in node_list:
+    for node in graph.nodes:
         node.update_hub()
 
     graph.normalize_auth_hub()
 
 
-def HITS(graph, iteration=100):
-    for i in range(iteration):
-        HITS_one_iter(graph)
+def HITS(graph, iteration=50):
+    x=0
+    while x < iteration:
+        x+=1 
+        hits_one_iter(graph)

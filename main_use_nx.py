@@ -14,7 +14,7 @@ def use_library(graph_file_with_path:str):
 
     graph.add_edges_from(edges)
 
-    plt.figure(figsize =(10, 10))
+    plt.figure(figsize =(3, 3))
     nx.draw_networkx(graph, with_labels = True,node_color='#9AC2C5')
     plt.show()
     hubs, authorities = nx.hits(graph, max_iter = 1, normalized = True)

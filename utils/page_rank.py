@@ -1,11 +1,14 @@
 
-def PageRank_one_iter(graph, d):
-    node_list = graph.nodes
-    for node in node_list:
-        node.update_pagerank(d, len(graph.nodes))
+def page_rank_one_iter(graph, damping_factor:float):
+    # damping factor 阻尼係數
+    for node in graph.nodes:
+        node.update_pagerank(damping_factor, len(graph.nodes))
     graph.normalize_pagerank()
 
-def PageRank(graph, d, iteration=100):
-    for i in range(iteration):
-        PageRank_one_iter(graph, d)
+def PageRank(graph, damping_factor:float, iteration=50):
+    x=0
+    while x < iteration:
+        x+=1 
+        page_rank_one_iter(graph, damping_factor)
+
 
